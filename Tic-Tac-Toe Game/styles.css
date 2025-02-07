@@ -1,0 +1,213 @@
+/* General body styling */
+body {
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #FFFB91; /* Soft pastel yellow background */
+    color: #333;
+    overflow: hidden;
+}
+
+/* Game container */
+.container {
+    text-align: center;
+    background-color: #FFEB3B; /* Yellowish background */
+    padding: 30px 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    width: 350px;
+    transition: transform 0.3s ease;
+}
+
+/* Title styling */
+h1 {
+    font-size: 2.8rem;
+    color: #FF9800; /* Orange shade */
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+/* Board grid */
+#board {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(3, 100px);
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+/* Individual cell styling */
+.cell {
+    width: 100px;
+    height: 100px;
+    background-color: #FFEB3B; /* Bright yellow */
+    border: 3px solid #FF9800; /* Dark yellow-orange border */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 12px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Hover effect for cells */
+.cell:hover {
+    background-color: #FFF176; /* Lighter yellow */
+    transform: scale(1.1);
+}
+
+/* Styling X and O */
+.cell.X {
+    color: #D32F2F; /* Red for X */
+}
+
+.cell.O {
+    color: #1976D2; /* Blue for O */
+}
+
+/* Player turn highlight */
+/* Status text styling - Move it below the Tic Tac Toe board */
+#status {
+    margin-top: 15px; /* Adjust spacing */
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #FF5722;
+    text-transform: capitalize;
+    transition: color 0.5s ease;
+    display: flex;
+    justify-content: center;
+}
+
+/* Ensure Board Stays Above */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#status.X-turn {
+    color: #D32F2F; /* Red for X */
+}
+
+#status.O-turn {
+    color: #1976D2; /* Blue for O */
+}
+
+/* Restart button */
+#restartButton {
+    margin-top: 20px;
+    padding: 12px 25px;
+    font-size: 1.3rem;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: #FF5722;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Restart button hover effect */
+#restartButton:hover {
+    background-color: #FF3D00;
+    transform: translateY(-4px);
+}
+
+/* Play Again button */
+#playAgainButton {
+    padding: 15px 35px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    background-color: #FF5722;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    margin-top: 20px;
+    cursor: pointer;
+    display: none;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Play Again button hover effect */
+#playAgainButton:hover {
+    background-color: #FF3D00;
+    transform: translateY(-3px);
+}
+
+/* Winning animation - Boom effect */
+@keyframes boomEffect {
+    0% {
+        transform: scale(1);
+        opacity: 0.5;
+    }
+    50% {
+        transform: scale(1.5);
+        opacity: 1;
+        color: red;
+        text-shadow: 0px 0px 20px red;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Winner message effect */
+.winner {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #FF5722;
+    text-transform: uppercase;
+    animation: boomBlast 1s ease-in-out infinite alternate;
+}
+
+/* Boom Blast Animation */
+@keyframes boomBlast {
+    0% {
+        transform: scale(1);
+        text-shadow: 0 0 10px rgba(255, 87, 34, 0.5);
+    }
+    50% {
+        transform: scale(1.5);
+        text-shadow: 0 0 20px rgba(255, 87, 34, 0.8);
+    }
+    100% {
+        transform: scale(1);
+        text-shadow: 0 0 10px rgba(255, 87, 34, 0.5);
+    }
+}
+
+/* Firework Effect */
+@keyframes fireworks {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.5);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(2);
+    }
+}
+
+/* Firework for Winner */
+.firework {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background: radial-gradient(circle, yellow, orange, red);
+    border-radius: 50%;
+    animation: fireworks 1s ease-out infinite;
+    pointer-events: none;
+}
